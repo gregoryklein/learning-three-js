@@ -13,13 +13,45 @@
                width: 100%;
                height: 100%
           }
+
+          #name {
+               position: absolute;
+               top: 10px;
+               width: 100%;
+               text-align: center;
+               z-index: 100;
+               display: block;
+          }
      </style>
 </head>
 
 <body>
+     <div id="name">GREG KLEIN</div>
+
      <script src="js/three.js"></script>
      <script>
-			// Our Javascript will go here.
+          //var texture = new THREE.TextureLoader().load("textures/water.jpg");
+          //texture.wrapS = THREE.RepeatWrapping;
+          //texture.wrapT = THREE.RepeatWrapping;
+          //texture.repeat.set(4, 4);
+
+          var loader = new THREE.FontLoader();
+
+          loader.load('fonts/helvetiker_regular.typeface.json', function (font) {
+
+               var geometry = new THREE.TextGeometry('greg klein', {
+                    font: font,
+                    size: 6,
+                    height: 1,
+                    curveSegments: 12,
+                    bevelEnabled: true,
+                    bevelThickness: 0.8,
+                    bevelSize: 0.2,
+                    bevelSegments: 4
+               });
+          });
+
+
      </script>
 </body>
 
