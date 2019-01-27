@@ -27,36 +27,36 @@
 
 <body>
 
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/100/three.js"></script>
+     <script src="http://threejs.org/build/three.js"></script>
      <script>
-          //var texture = new THREE.TextureLoader().load("textures/water.jpg");
-          //texture.wrapS = THREE.RepeatWrapping;
-          //texture.wrapT = THREE.RepeatWrapping;
-          //texture.repeat.set(4, 4);
+          //webpack inclusion of threejs
+          //var THREE = require('three');
+
+          //import * as THREE from 'three';
 
           //setting up the scene
-          var scene = new THREE.Scene();
+          var scene=new THREE.Scene();
 
           //camera creation
-          var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+          var camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);
 
           //render creation
-          var renderer = new THREE.WebGLRenderer();
-          renderer.setSize(window.innerWidth, window.innerHeight);
+          var renderer=new THREE.WebGLRenderer();
+          renderer.setSize(window.innerWidth,window.innerHeight);
           document.body.appendChild(renderer.domElement);
 
           function animate() {
                requestAnimationFrame(animate);
-               renderer.render(scene, camera);
+               renderer.render(scene,camera);
           }
           animate();
 
           //text creation
-          var loader = new THREE.FontLoader();
+          var loader=new THREE.FontLoader();
 
-          loader.load('fonts/helvetiker_regular.typeface.json', function (font) {
+          loader.load('fonts/Muli_Bold.json',function(font) {
 
-               var geometry = new THREE.TextGeometry('greg klein', {
+               var geometry=new THREE.TextGeometry('greg klein',{
                     font: font,
                     size: 6,
                     height: 1,
@@ -66,12 +66,13 @@
                     bevelSize: 0.2,
                     bevelSegments: 4
                });
+               scene.add(geometry);
           });
 
           //adding everything to the scene
           scene.add(geometry);
 
-          camera.position.z = 5;
+          camera.position.z=5;
 
 
 
