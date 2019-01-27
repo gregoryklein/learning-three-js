@@ -14,27 +14,44 @@
                height: 100%
           }
 
-          #name {
+          /*#name {
                position: absolute;
                top: 10px;
                width: 100%;
                text-align: center;
                z-index: 100;
                display: block;
-          }
+          }*/
      </style>
 </head>
 
 <body>
-     <div id="name">GREG KLEIN</div>
 
-     <script src="js/three.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/100/three.js"></script>
      <script>
           //var texture = new THREE.TextureLoader().load("textures/water.jpg");
           //texture.wrapS = THREE.RepeatWrapping;
           //texture.wrapT = THREE.RepeatWrapping;
           //texture.repeat.set(4, 4);
 
+          //setting up the scene
+          var scene = new THREE.Scene();
+
+          //camera creation
+          var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+
+          //render creation
+          var renderer = new THREE.WebGLRenderer();
+          renderer.setSize(window.innerWidth, window.innerHeight);
+          document.body.appendChild(renderer.domElement);
+
+          function animate() {
+               requestAnimationFrame(animate);
+               renderer.render(scene, camera);
+          }
+          animate();
+
+          //text creation
           var loader = new THREE.FontLoader();
 
           loader.load('fonts/helvetiker_regular.typeface.json', function (font) {
@@ -50,6 +67,14 @@
                     bevelSegments: 4
                });
           });
+
+          //adding everything to the scene
+          scene.add(geometry);
+
+          camera.position.z = 5;
+
+
+
 
 
      </script>
